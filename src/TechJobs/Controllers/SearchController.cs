@@ -23,19 +23,19 @@ namespace TechJobs.Controllers
 
             if (string.IsNullOrEmpty(searchTerm))
             {
+                jobs = JobData.FindAll();
+                ViewBag.jobs = jobs;
                 return View("Index");
             }
-
+            
             if (searchType.Equals("all"))
             {
                 jobs = JobData.FindByValue(searchTerm);
                 ViewBag.jobs = jobs;
                 return View("Index");
             }
-
             else
             {
-
                 jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
                 ViewBag.jobs = jobs;
                 return View("Index");
